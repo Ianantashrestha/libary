@@ -1,11 +1,19 @@
-import React, {FC} from 'react'
+import React from 'react'
 import { FormProps } from '../props'
 import { FormInstance } from '../models'
-
-const Form:React.ForwardRefRenderFunction<FormInstance, FormProps> = (FormProps,ref) =>{
-    const {children,wrapperClassName,...restProps} = FormProps
-
+const Form:React.ForwardRefRenderFunction<FormInstance, FormProps> = ({
+    wrapperClassName,
+    name,
+    children,
+    initialValues,
+    form,
+    onFinish,
+    ...restProps
+},ref) =>{
+    
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
+        event.preventDefault()
+        event.stopPropagation()
 
     }
 

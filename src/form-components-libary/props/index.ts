@@ -1,19 +1,14 @@
 import { ReactNode } from 'react'
-import { Callbacks,FormInstance,Store,ValidateMessages } from '../models'
+import { FormInstance,Store,Callbacks} from '../models'
 type BaseFormProps = Omit<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit' | 'children'>;
+
 export interface FormProps<Values = any> extends BaseFormProps {
+    wrapperClassName?: string,
+    name?:string,
+    children: ReactNode,
     initialValues?: Store,
     form?: FormInstance<Values>,
-    children: ReactNode,
-    wrapperClassName?: string,
-    className?: string,
-    name?: string,
-    onValuesChange?: Callbacks<Values>['onValuesChange'],
-    onFieldsChange?: Callbacks<Values>['onFieldsChange'],
-    onFinish?: Callbacks<Values>['onFinish'],
-    onFinishFailed?: Callbacks<Values>['onFinishFailed'],
-    validateTrigger?: string | string[] | false,
-    validateMessages?: ValidateMessages;
+    onFinish?: Callbacks<Values>['onFinish'];
 }
 
 export interface TextFieldProps {
